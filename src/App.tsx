@@ -55,6 +55,13 @@ export default function App() {
     void save({ ...state, completions: { ...state.completions, [habitId]: nextDates } })
   }
 
+  function renameHabit(habitId: string, name: string) {
+    void save({
+      ...state,
+      habits: state.habits.map((habit) => habit.id === habitId ? { ...habit, name } : habit),
+    })
+  }
+
   function addHabit(event: FormEvent) {
     event.preventDefault()
     const trimmed = name.trim()
@@ -114,7 +121,7 @@ export default function App() {
         {adding && (
           <form className="add-form" onSubmit={addHabit}>
             <label className="visually-hidden" htmlFor="habit-name">Habit name</label>
-            <input id="habit-name" autoFocus maxLength={80} placeholder="What would you like to do?" value={name} onChange={(event) => setName(event.target.value)} />
+            <input id="habit-name" autoFocus maxLength={40} placeholder="What would you like to do?" value={name} onChange={(event) => setName(event.target.value)} />
             <button className="save-button" type="submit">Add</button>
             <button className="cancel-button" type="button" onClick={() => { setAdding(false); setName('') }}>Cancel</button>
           </form>
@@ -145,6 +152,7 @@ export default function App() {
                 todayKey={todayKey}
                 history={visibleHistory}
                 onToggle={toggle}
+                onRename={renameHabit}
                 onRemove={removeHabit}
               />
             ))}

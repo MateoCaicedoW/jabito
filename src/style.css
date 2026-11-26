@@ -44,10 +44,19 @@ h2 { margin: 0; font-size: 21px; font-weight: 620; letter-spacing: -.3px; }
 .cancel-button { border: 0; background: transparent; color: var(--muted); padding: 0 10px; font-size: 12px; }
 .habit-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; }
 .habit-card { min-width: 0; padding: 14px; border: 1px solid #2b2e32; border-radius: 13px; background: var(--surface); }
-.habit-card-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.habit-title { min-width: 0; display: flex; align-items: center; gap: 10px; }
+.habit-card-heading { min-width: 0; display: flex; align-items: center; gap: 12px; }
+.habit-title { flex: 1 1 0; min-width: 0; display: flex; align-items: center; gap: 10px; }
+.habit-title h3 { flex: 1 1 0; width: 0; min-width: 0; }
 .habit-title h3 { overflow: hidden; margin: 0; color: #e8eaed; font-size: 15px; font-weight: 650; text-overflow: ellipsis; white-space: nowrap; }
 .habit-emoji { flex: 0 0 auto; width: 32px; height: 32px; border-radius: 9px; display: grid; place-items: center; font-size: 16px; }
+.rename-button, .rename-save, .rename-cancel { flex: 0 0 auto; min-height: 36px; border: 0; border-radius: 6px; background: transparent; color: #a1a6ad; font-size: 12px; padding: 6px 8px; }
+.rename-button:hover, .rename-cancel:hover { color: #f0f2f4; background: #292d30; }
+.rename-button { display: grid; place-items: center; width: 36px; }
+.rename-button svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5; }
+.rename-form { display: flex; align-items: center; gap: 4px; min-width: 0; flex: 1; }
+.rename-form input { min-width: 0; width: 100%; border: 1px solid #454b50; border-radius: 6px; background: #111315; color: #e6e8eb; padding: 8px; font-size: 14px; }
+.rename-save { background: #245e43; color: #fff; }
+.rename-save:hover { background: #2d7654; }
 .today-check { flex: 0 0 auto; width: 40px; height: 40px; border: 1px solid #41464a; border-radius: 9px; background: #202326; color: white; font-size: 24px; font-weight: 600; }
 .today-check.is-done { border-color: transparent; }
 .today-check:hover { border-color: #58d68d; }
@@ -96,7 +105,7 @@ h2 { margin: 0; font-size: 21px; font-weight: 620; letter-spacing: -.3px; }
   .habit-card { padding: 11px 9px; border-radius: 11px; }
   .habit-card-heading { gap: 8px; }
   .today-check { width: 44px; height: 44px; }
-  .habit-title h3 { font-size: 15px; }
+  .habit-title h3 { display: -webkit-box; font-size: 15px; white-space: normal; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
   .habit-stats { gap: 14px; margin: 8px 0 10px; font-size: 12px; font-variant-numeric: tabular-nums; }
   .history-scroll { overflow-x: hidden; }
   .history-months, .heatmap { --cell-size: clamp(8px, calc(3.704vw - 3.85px), 16px); grid-template-columns: repeat(27, var(--cell-size)); column-gap: 2px; }
@@ -115,7 +124,7 @@ h2 { margin: 0; font-size: 21px; font-weight: 620; letter-spacing: -.3px; }
 }
 
 @media (pointer: coarse) {
-  .today-check, .add-button, .save-button, .cancel-button, .remove-button { min-height: 44px; }
+  .today-check, .add-button, .save-button, .cancel-button, .remove-button, .rename-button, .rename-save, .rename-cancel { min-height: 44px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
